@@ -22,7 +22,7 @@ jobs:
 
       - name: Run conformance tests
         id: run-conformance
-        uses: tom-tan/cwl-run-conformance-tests
+        uses: tom-tan/cwl-run-conformance-tests@v1.0.0
         with:
           cwlVersion: v1.0
           runner: cwltool
