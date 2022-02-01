@@ -34,7 +34,7 @@ jobs:
           echo ${{ steps.run-conformance.outputs.badgedir }}
 ```
 
-## Inputs
+## Input parameters
 
 | Parameters | Required | Default | Description |
 |---|---|---|---|
@@ -45,7 +45,7 @@ jobs:
 
 The `skip-python-install` parameter is useful when CWL runner requires specific version of Python.
 
-## Outputs
+## Output parameters
 
 | Parameters | Description |
 |---|---|
