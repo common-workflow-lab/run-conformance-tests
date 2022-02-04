@@ -1,4 +1,4 @@
-# cwl-run-conformance-tests
+# run-conformance-tests
 It is a custom Github Action for running CWL conformance tests with a given CWL runner.
 
 ## Example
@@ -22,7 +22,7 @@ jobs:
 
       - name: Run conformance tests
         id: run-conformance
-        uses: tom-tan/cwl-run-conformance-tests@v1.0.0
+        uses: common-workflow-lab/run-conformance-tests@v1.0.1
         with:
           cwlVersion: v1.0
           runner: cwltool
