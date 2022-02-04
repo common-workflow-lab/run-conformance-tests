@@ -47,6 +47,7 @@ runs:
     - uses: actions/checkout@v2
       with:
         repository: ${{ steps.get-cwl-repository.outputs.repo }}
+        ref: main
         path: cwl-run-conformance-${{ inputs.cwlVersion }}
     - name: Setup Python for testing
       if: ${{ inputs.skip-python-install == 'false' }}
