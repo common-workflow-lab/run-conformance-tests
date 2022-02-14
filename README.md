@@ -22,7 +22,7 @@ jobs:
 
       - name: Run conformance tests
         id: run-conformance
-        uses: common-workflow-lab/run-conformance-tests@v1.0.1
+        uses: common-workflow-lab/run-conformance-tests@v1
         with:
           cwlVersion: v1.0
           runner: cwltool
