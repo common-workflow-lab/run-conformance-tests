@@ -1,6 +1,11 @@
 name: 'Run CWL conformance tests'
 author: 'Tomoya Tanjo'
 description: 'Run CWL conformance tests'
+
+branding:
+  icon: check-square
+  color: yellow
+
 inputs:
   cwlVersion:
     description: 'CWL version'
