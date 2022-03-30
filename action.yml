@@ -76,7 +76,7 @@ runs:
           basedir=.
         fi
 
-        if [ ${{ inputs.tags }} != '' ]; then
+        if [ -n "${{ inputs.tags }}" ]; then
           tagopt="--tags=${{ inputs.tags }}"
         fi
 
