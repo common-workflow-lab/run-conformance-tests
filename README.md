@@ -43,6 +43,7 @@ jobs:
 | `timeout` | false | 30 | timeout in seconds |
 | `tags` | false | "" | tags to be tested (e.g., "docker,required") |
 | `n` | false | "" | specify tests by their numbers (e.g., "1-5,10,13") |
+| `extra` | false | "" | extra arguments for the given CWL runner |
 | `skip-python-install` | false | false | skip installing python interpreter |
 
 The `skip-python-install` parameter is useful when CWL runner requires specific version of Python.
