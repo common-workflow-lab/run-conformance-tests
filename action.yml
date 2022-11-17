@@ -55,7 +55,7 @@ runs:
           echo "::error ::Unsupported cwlVersion: '${cwlVersion}'"
           exit 1
         fi
-        echo "::set-output name=repo::${baseOwner}/${repo}"
+        echo "repo=${baseOwner}/${repo}" >> $GITHUB_OUTPUT
       env:
         cwlVersion: ${{ inputs.cwlVersion }}
     - uses: actions/checkout@v2
@@ -65,7 +65,7 @@ runs:
         path: cwl-run-conformance-${{ inputs.cwlVersion }}
     - name: Setup Python for testing
       if: ${{ inputs.skip-python-install == 'false' }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.9.x'
     - name: Install cwltest
@@ -95,12 +95,12 @@ runs:
         fi
 
         ./run_test.sh RUNNER=${{inputs.runner}} --badgedir=$basedir/badges --junit-xml=$basedir/junit.xml --timeout=${{inputs.timeout}} $tagopt $nopt "$extraopt" || true
-        echo "::set-output name=badgedir::$GITHUB_WORKSPACE/cwl-run-conformance-${{ inputs.cwlVersion }}/badges"
-        echo "::set-output name=result::$GITHUB_WORKSPACE/cwl-run-conformance-${{ inputs.cwlVersion }}/junit.xml"
+        echo "badgedir=$GITHUB_WORKSPACE/cwl-run-conformance-${{ inputs.cwlVersion }}/badges" >> $GITHUB_OUTPUT
+        echo "result=$GITHUB_WORKSPACE/cwl-run-conformance-${{ inputs.cwlVersion }}/junit.xml" >> $GITHUB_OUTPUT
       env:
         cwlVersion: 
     - name: Publish the result of conformance tests
-      uses: EnricoMi/publish-unit-test-result-action@v1
+      uses: EnricoMi/publish-unit-test-result-action@v2
       with:
-        files: ${{ github.workspace }}/cwl-run-conformance-${{ inputs.cwlVersion }}/junit.xml
+        junit_files: ${{ github.workspace }}/cwl-run-conformance-${{ inputs.cwlVersion }}/junit.xml
         check_name: The result of conformance tests for CWL ${{ inputs.cwlVersion }}
