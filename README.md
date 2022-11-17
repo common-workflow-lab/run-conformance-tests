@@ -11,14 +11,14 @@ jobs:
       # setup CWL runner
       - uses: actions/checkout@v2
       - name: Setup python for cwltool
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.9.x'
       - name: Install cwltool
         run: pip install cwltool
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: '14.x'
+          node-version: '18.x'
 
       - name: Run conformance tests
         id: run-conformance
