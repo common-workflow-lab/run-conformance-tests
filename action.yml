@@ -58,7 +58,7 @@ runs:
         echo "repo=${baseOwner}/${repo}" >> $GITHUB_OUTPUT
       env:
         cwlVersion: ${{ inputs.cwlVersion }}
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         repository: ${{ steps.get-cwl-repository.outputs.repo }}
         ref: main
