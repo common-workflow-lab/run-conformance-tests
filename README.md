@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # setup CWL runner
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup python for cwltool
         uses: actions/setup-python@v4
         with:
