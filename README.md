@@ -9,16 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # setup CWL runner
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup python for cwltool
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9.x'
+          python-version: '3.12.x'
       - name: Install cwltool
         run: pip install cwltool
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18.x'
+          node-version: '20.x'
 
       - name: Run conformance tests
         id: run-conformance
