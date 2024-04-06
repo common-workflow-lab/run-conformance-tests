@@ -27,6 +27,9 @@ inputs:
   n:
     description: 'specify tests by their numbers (e.g., "1-5,10,13")'
     required: false
+  s:
+    description: 'specify tests by their names (e.g., "test_a,test_b")'
+    required: false
   extra:
     description: 'extra arguments for the given CWL runner'
     required: false
@@ -90,11 +93,15 @@ runs:
           nopt="-n=${{ inputs.n }}"
         fi
 
+        if [ -n "${{ inputs.s }}" ]; then
+          sopt="-s=${{ inputs.s }}"
+        fi
+
         if [ -n "${{ inputs.extra }}" ]; then
           extraopt="EXTRA=${{ inputs.extra }}"
         fi
 
-        ./run_test.sh RUNNER=${{inputs.runner}} --badgedir=$basedir/badges --junit-xml=$basedir/junit.xml --timeout=${{inputs.timeout}} $tagopt $nopt "$extraopt" || true
+        ./run_test.sh RUNNER=${{inputs.runner}} --badgedir=$basedir/badges --junit-xml=$basedir/junit.xml --timeout=${{inputs.timeout}} $tagopt $nopt $sopt "$extraopt" || true
         echo "badgedir=$GITHUB_WORKSPACE/cwl-run-conformance-${{ inputs.cwlVersion }}/badges" >> $GITHUB_OUTPUT
         echo "result=$GITHUB_WORKSPACE/cwl-run-conformance-${{ inputs.cwlVersion }}/junit.xml" >> $GITHUB_OUTPUT
       env:
